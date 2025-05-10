@@ -12,7 +12,7 @@ const Page = () => {
     phone: '+1 (209)-505-8044',
     github: 'https://github.com/brockspacek',
     linkedin: 'https://linkedin.com/in/yourusername',
-    resumeLink: '/your-resume.pdf',
+    resumeLink: 'https://docs.google.com/document/d/1aX7FOqNWLDpCD3dNIccW-IQ4A_eZESXR/edit',
     about:
       "I'm a passionate web developer with expertise in modern JavaScript frameworks like React and Next.js. With a strong foundation in both frontend and backend technologies, I build responsive, performant web applications that solve real problems. I'm constantly learning new technologies and approaches to stay at the cutting edge of web development.",
   };
@@ -30,7 +30,7 @@ const Page = () => {
       title: 'Gym Social Media Platform - Spot Me',
       description: 'A web application for connecting gym goers with trainers and spotters.',
       technologies: ['Next.js', 'TypeScript', 'C#'],
-      link: 'https://spotme-taupe.vercel.app',
+      link: 'https://new-front-end-xi.vercel.app/',
     },
     {
       id: 3,
