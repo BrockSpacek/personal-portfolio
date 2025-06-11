@@ -1,188 +1,142 @@
 'use client';
-import { TabItem, Tabs } from 'flowbite-react';
 import Image from 'next/image';
 import ProfileImage from '@/assets/02-CSAs7_Headshots.jpg';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBarComponent from '@/Components/NavBarComponent';
 
 const Page = () => {
+  
+
+  const useAdvancedTypewriter = (strings: string[], speed: number = 100, deleteSpeed: number = 50, pauseTime: number = 2000) => {
+    const [displayText, setDisplayText] = useState('');
+    const [stringIndex, setStringIndex] = useState(0);
+    const [charIndex, setCharIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+      const currentString = strings[stringIndex];
+      
+      const timeout = setTimeout(() => {
+        if (!isDeleting) {
+          if (charIndex < currentString.length) {
+            setDisplayText(currentString.substring(0, charIndex + 1));
+            setCharIndex(prev => prev + 1);
+          } else {
+            setTimeout(() => setIsDeleting(true), pauseTime);
+          }
+        } else {
+          if (charIndex > 0) {
+            setDisplayText(currentString.substring(0, charIndex - 1));
+            setCharIndex(prev => prev - 1);
+          } else {
+            setIsDeleting(false);
+            setStringIndex(prev => (prev + 1) % strings.length);
+          }
+        }
+      }, isDeleting ? deleteSpeed : speed);
+
+      return () => clearTimeout(timeout);
+    }, [charIndex, isDeleting, stringIndex, strings, speed, deleteSpeed, pauseTime]);
+
+    return displayText;
+  };
+
   const personalInfo = {
     name: 'Brock Spacek',
     title: 'Full Stack Web Developer',
-    email: 'brockspacek1@gmail.com',
-    phone: '+1 (209)-505-8044',
-    github: 'https://github.com/brockspacek',
-    linkedin: 'https://linkedin.com/in/brockspacek',
-    resumeLink: 'https://docs.google.com/document/d/1aX7FOqNWLDpCD3dNIccW-IQ4A_eZESXR/edit',
-    about:
-      "I'm a passionate web developer with expertise in modern JavaScript frameworks like React and Next.js. With a strong foundation in both frontend and backend technologies, I build responsive, performant web applications that solve real problems. I'm constantly learning new technologies and approaches to stay at the cutting edge of web development.",
   };
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Budget Tracker App',
-      description: 'A mobile-friendly app for tracking expenses with local storage support.',
-      technologies: ['JavaScript', 'Tailwind CSS', 'Local Storage'],
-      link: '#',
-    },
-    {
-      id: 2,
-      title: 'Gym Social Media Platform - Spot Me',
-      description: 'A web application for connecting gym goers with trainers and spotters.',
-      technologies: ['Next.js', 'TypeScript', 'C#'],
-      link: 'https://new-front-end-xi.vercel.app/',
-    },
-    {
-      id: 3,
-      title: 'Pokémon Data Explorer',
-      description: 'Search and favorite Pokémon with evolution chain info.',
-      technologies: ['React', 'PokéAPI', 'Local Storage'],
-      link: 'https://pokemon-nine-gules.vercel.app',
-    },
+  // Rotating titles for the typewriter effect
+  const titles = [
+    'FULL STACK WEB DEVELOPER',
+    'REACT SPECIALIST', 
+    'NEXT.JS EXPERT',
+    'PROBLEM SOLVER'
   ];
+  
+  const typedTitle = useAdvancedTypewriter(titles, 80, 40, 1500);
 
-  const skills = [
-    {
-      category: 'Frontend',
-      items: ['React', 'Next.js', 'JavaScript/TypeScript', 'Tailwind CSS', 'Responsive Design'],
-    },
-    {
-      category: 'Backend',
-      items: ['C#', 'RESTful APIs', 'Authentication & Authorization'],
-    },
-    {
-      category: 'Database',
-      items: ['SQL', 'Azure', 'Database Design'],
-    },
+ 
+
+  const stats = [
+    { number: '20+', label: 'Projects Completed' },
+    { number: '1', label: 'Year Experience' },
+    { number: '∞', label: 'Learning Capability' }
   ];
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
-
+    <div className="bg-black text-white min-h-screen">
       <NavBarComponent />
-      <section className="flex flex-col items-center justify-center text-center py-12 px-4 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700">
-        
-         <div className="relative w-[250px] h-[250px] rounded-full border-4 border-emerald-500 overflow-hidden my-5">
-                <Image
-                  src={ProfileImage}
-                  priority
-                  alt="User Profile"
-                  className="object-cover"
-                />
-            </div>
-  
-        <h1 className="text-5xl font-extrabold text-emerald-400 mb-2">{personalInfo.name}</h1>
-        <p className="text-xl text-gray-300">{personalInfo.title}</p>
-      </section>
-
-      {/* Tabs */}
-      <div className="max-w-5xl mx-auto mt-10 px-4">
-        <Tabs aria-label="Portfolio Tabs" variant="default">
-          <TabItem active title="🧑‍💻 About Me">
-            <div className="p-6 max-w-3xl mx-auto text-center space-y-4">
-              <h2 className="text-3xl font-bold text-emerald-400 mb-4 border-b border-emerald-500 pb-2">
-                About Me
-              </h2>
-              <p className="text-xl text-gray-300">{personalInfo.about}</p>
-            </div>
-          </TabItem>
-
-          <TabItem title="💼 Projects">
-            <div className="grid gap-6 p-6 md:grid-cols-2">
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className="border border-emerald-500 rounded-lg p-5 bg-gray-800 shadow-md hover:shadow-lg transition-transform transform hover:scale-105"
-                >
-                  <h3 className="text-xl font-semibold text-emerald-400">{project.title}</h3>
-                  <p className="mt-2 text-gray-300">{project.description}</p>
-                  <p className="text-sm text-gray-400 mt-2">
-                    <strong>Technologies:</strong> {project.technologies.join(', ')}
-                  </p>
-                  <a
-                    href={project.link}
-                    className="text-emerald-400 hover:underline block mt-3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔗 View Project
-                  </a>
+      
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <h1 className="text-6xl lg:text-7xl font-bold">
+                I&apos;m <span className="text-white">{personalInfo.name.split(' ')[0]}</span>
+              </h1>
+              
+              <div className="relative inline-block">
+                <div className="bg-emerald-400 w-[500px] text-black px-6 py-3 text-xl lg:text-2xl font-bold uppercase tracking-wider transform min-h-[60px] flex items-center">
+                  I'M A <span className="ml-2">{typedTitle}</span>
+                  <span className="animate-pulse ml-1 text-2xl">|</span>
                 </div>
-              ))}
-            </div>
-          </TabItem>
-
-          <TabItem title="🛠️ Skills">
-            <div className="grid gap-6 p-6 md:grid-cols-2">
-              {skills.map((skill, index) => (
-                <div key={index}>
-                  <h3 className="text-lg font-semibold text-emerald-400">{skill.category}</h3>
-                  <ul className="list-disc list-inside text-gray-300 mt-2">
-                    {skill.items.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </TabItem>
-
-          <TabItem title="📞 Contact">
-            <div className="text-center p-6 space-y-4">
-              <p className='text-emerald-400'>
-                <span className='text-white font-semibold'>Phone:</span> {personalInfo.phone}
-              </p>
-              <p className='flex justify-center font-semibold'>
-                Email:
-                <p className="text-emerald-400 underline px-2">
-                  {personalInfo.email}
-                </p>
-                
-              </p>
-              <div className="flex justify-center gap-8 mt-6">
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 hover:underline"
-                >
-                  🔗 LinkedIn
-                </a>
-                <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 hover:underline"
-                >
-                  💻 GitHub
-                </a>
               </div>
             </div>
-          </TabItem>
 
-          <TabItem title="📄 Resume">
-            <div className="text-center p-6">
-              <a
-                href={personalInfo.resumeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-emerald-500 text-white font-semibold px-6 py-2 rounded hover:bg-emerald-600 transition"
-              >
-                View My Resume (PDF)
-              </a>
+            {/* Contact Button */}
+            <button className="group border border-gray-400 px-8 py-3 text-lg hover:bg-emerald-400 hover:text-black hover:border-emerald-400 transition-all duration-300 flex items-center gap-3">
+              Contact Me
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+
+            {/* Stats */}
+            <div className="flex gap-12 pt-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-4xl lg:text-5xl font-bold text-white mb-2 animate-pulse">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-400 text-sm uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
-          </TabItem>
-        </Tabs>
-      </div>
+          </div>
+
+          {/* Background and Image */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="absolute top-0 right-0 w-96 h-96 lg:w-[500px] lg:h-[600px] bg-emerald-400 rounded-tl-[100px] -z-10"></div>
+            
+            {/* Profile Image */}
+            <div className="relative w-80 h-96 lg:w-[450px] lg:h-[550px] overflow-hidden rounded-tl-[80px] shadow-2xl">
+              <Image
+                src={ProfileImage}
+                alt="Brock Spacek"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute top-12 right-12 w-8 h-8 bg-emerald-400 rotate-45"></div>
+            <div className="absolute bottom-12 right-0 w-6 h-6 bg-white rounded-full"></div>
+            <div className="absolute bottom-20 right-8 w-4 h-4 bg-emerald-400 rounded-full"></div>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="mt-16 text-center text-gray-500 text-sm pb-6">
-        © {new Date().getFullYear()} Brock Spacek. Built with Next.js, Tailwind CSS & Flowbite.
+      <footer className="text-center text-gray-500 text-sm pb-6 px-4">
+        © {new Date().getFullYear()} {personalInfo.name}. Built with Next.js, Tailwind CSS & Flowbite.
       </footer>
     </div>
   );
 };
 
 export default Page;
-
