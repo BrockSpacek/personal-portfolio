@@ -1,8 +1,9 @@
 'use client';
 import { TabItem, Tabs } from 'flowbite-react';
 import Image from 'next/image';
-import ProfileImage from '@/assets/Screenshot_20250509_105405_Gallery (1).jpg';
+import ProfileImage from '@/assets/02-CSAs7_Headshots.jpg';
 import React from 'react';
+import NavBarComponent from '@/Components/NavBarComponent';
 
 const Page = () => {
   const personalInfo = {
@@ -11,7 +12,7 @@ const Page = () => {
     email: 'brockspacek1@gmail.com',
     phone: '+1 (209)-505-8044',
     github: 'https://github.com/brockspacek',
-    linkedin: 'https://linkedin.com/in/yourusername',
+    linkedin: 'https://linkedin.com/in/brockspacek',
     resumeLink: 'https://docs.google.com/document/d/1aX7FOqNWLDpCD3dNIccW-IQ4A_eZESXR/edit',
     about:
       "I'm a passionate web developer with expertise in modern JavaScript frameworks like React and Next.js. With a strong foundation in both frontend and backend technologies, I build responsive, performant web applications that solve real problems. I'm constantly learning new technologies and approaches to stay at the cutting edge of web development.",
@@ -58,12 +59,19 @@ const Page = () => {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen">
+
+      <NavBarComponent />
       <section className="flex flex-col items-center justify-center text-center py-12 px-4 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700">
-        <Image
-          src={ProfileImage}
-          alt="Profile Image of Brock"
-          className="h-[250px] w-[250px] rounded-full border-4 border-emerald-500 shadow-lg mb-4"
-        />
+        
+         <div className="relative w-[250px] h-[250px] rounded-full border-4 border-emerald-500 overflow-hidden my-5">
+                <Image
+                  src={ProfileImage}
+                  priority
+                  alt="User Profile"
+                  className="object-cover"
+                />
+            </div>
+  
         <h1 className="text-5xl font-extrabold text-emerald-400 mb-2">{personalInfo.name}</h1>
         <p className="text-xl text-gray-300">{personalInfo.title}</p>
       </section>
