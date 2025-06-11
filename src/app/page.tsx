@@ -81,7 +81,7 @@ const Page = () => {
               
               <div className="relative inline-block">
                 <div className="bg-emerald-400 w-[500px] text-black px-6 py-3 text-xl lg:text-2xl font-bold uppercase tracking-wider transform min-h-[60px] flex items-center">
-                  I'M A <span className="ml-2">{typedTitle}</span>
+                  I&apos;M A <span className="ml-2">{typedTitle}</span>
                   <span className="animate-pulse ml-1 text-2xl">|</span>
                 </div>
               </div>
