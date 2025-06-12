@@ -3,6 +3,9 @@ import Image from 'next/image';
 import ProfileImage from '@/assets/02-CSAs7_Headshots.jpg';
 import React, { useEffect, useState } from 'react';
 import NavBarComponent from '@/Components/NavBarComponent';
+import InstaLogo from "@/assets/icons8-instagram-96.png";
+import LinkedInLogo from "@/assets/icons8-linkedin-96.png";
+import GitHubLogo from "@/assets/icons8-github-100.png";
 
 const Page = () => {
   
@@ -69,7 +72,7 @@ const Page = () => {
       <NavBarComponent />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center px-8 lg:px-16">
+      <section className=" pt-24 pb-10 px-8 lg:px-16">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* TypeWriter */}
@@ -123,12 +126,21 @@ const Page = () => {
               />
             </div>
             
-            <div className="absolute top-12 right-12 w-8 h-8 bg-emerald-400 rotate-45"></div>
-            <div className="absolute bottom-12 right-0 w-6 h-6 bg-white rounded-full"></div>
-            <div className="absolute bottom-20 right-8 w-4 h-4 bg-emerald-400 rounded-full"></div>
+            <div className="lg:absolute lg:top-12 lg:right-12 lg:w-8 lg:h-8 lg:bg-emerald-400 lg:rotate-45"></div>
+            <div className="lg:absolute lg:bottom-12 lg:right-0 lg:w-6 lg:h-6 lg:bg-white lg:rounded-full"></div>
+            <div className="lg:absolute lg:bottom-20 lg:right-8 lg:w-4 lg:h-4 lg:bg-emerald-400 lg:rounded-full"></div>
+            
           </div>
+          
         </div>
+          
       </section>
+
+      <div className='flex justify-center w-1/2 mx-auto gap-3 pb-5'>  
+            <Image src={InstaLogo} alt="Instagram Logo" className='h-20 w-20 cursor-pointer' />
+            <Image src={GitHubLogo} alt="GitHub Logo" className='h-20 w-20 bg-white rounded-full cursor-pointer'/>
+            <Image src={LinkedInLogo} alt="LinkedIn Logo" className='h-20 w-20 cursor-pointer'/>
+      </div>
 
       {/* Footer */}
       <footer className="text-center text-gray-500 text-sm pb-6 px-4">

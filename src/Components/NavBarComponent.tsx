@@ -37,16 +37,16 @@ const NavBarComponent = () => {
             />
         </div>
         <div className='flex items-center gap-20 px-10'>
-            <button className='cursor-pointer hover:text-emerald-200 transition-all text-center' onClick={handleOpenHome}>
+            <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-all text-center' onClick={handleOpenHome}>
                 Home
             </button>
-            <button className='cursor-pointer hover:text-emerald-200 transition-colors' onClick={handleOpenSkills}>
+            <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-colors' onClick={handleOpenSkills}>
                 Skills
             </button>
-            <button className='cursor-pointer hover:text-emerald-200 transition-colors' onClick={handleOpenProjects}>
+            <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-colors' onClick={handleOpenProjects}>
                 Projects
             </button>
-            <button className='cursor-pointer hover:text-emerald-200 transition-colors' onClick={handleOpenInformation}>
+            <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-colors' onClick={handleOpenInformation}>
                 Information
             </button>
         </div>
