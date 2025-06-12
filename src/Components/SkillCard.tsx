@@ -23,7 +23,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
             <Image 
               src={logo} 
               alt={`${title} Logo`} 
-              className='h-24 w-24 object-contain transition-all duration-300'
+              className='h-20 w-20 object-contain transition-all duration-300'
             />
           </div>
         </div>

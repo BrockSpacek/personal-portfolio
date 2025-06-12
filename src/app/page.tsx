@@ -46,7 +46,7 @@ const Page = () => {
     title: 'Full Stack Web Developer',
   };
 
-  // Rotating titles for the typewriter effect
+  // Typewriter Text
   const titles = [
     'FULL STACK WEB DEVELOPER',
     'REACT SPECIALIST', 
@@ -72,7 +72,7 @@ const Page = () => {
       <section className="min-h-screen flex items-center px-8 lg:px-16">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
-          {/* Left Content */}
+          {/* TypeWriter */}
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-6xl lg:text-7xl font-bold">
@@ -122,8 +122,7 @@ const Page = () => {
                 priority
               />
             </div>
-
-            {/* Decorative Elements */}
+            
             <div className="absolute top-12 right-12 w-8 h-8 bg-emerald-400 rotate-45"></div>
             <div className="absolute bottom-12 right-0 w-6 h-6 bg-white rounded-full"></div>
             <div className="absolute bottom-20 right-8 w-4 h-4 bg-emerald-400 rounded-full"></div>
