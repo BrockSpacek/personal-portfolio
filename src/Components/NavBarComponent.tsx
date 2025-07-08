@@ -25,7 +25,7 @@ const NavBarComponent = () => {
 
 
   return (
-    <div className='bg-emerald-700 h-25 w-full'>
+    <div className='bg-gradient-to-r from-emerald-400 to-cyan-400 h-15 w-full'>
     <div className='flex justify-between items-center text-2xl h-full'>
         <div className=''>
             <Image 
@@ -36,9 +36,9 @@ const NavBarComponent = () => {
                 
             />
         </div>
-        <div className='flex items-center gap-20 px-10'>
-            <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-all text-center' onClick={handleOpenHome}>
-                Home
+        <div className='flex items-center gap-20 px-10 font-semibold'>
+            <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-colors' onClick={handleOpenHome}>
+                Home  
             </button>
             <button className='cursor-pointer hover:text-emerald-200 hover:border-b border-white transition-colors' onClick={handleOpenSkills}>
                 Skills

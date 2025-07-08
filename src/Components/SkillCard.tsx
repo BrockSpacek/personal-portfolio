@@ -23,7 +23,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
             <Image 
               src={logo} 
               alt={`${title} Logo`} 
-              className='h-20 w-20 object-contain transition-all duration-300'
+              className='h-16 w-16 object-contain transition-all duration-300'
             />
           </div>
         </div>
@@ -39,7 +39,7 @@ const SkillCard: React.FC<SkillCardProps> = ({
             {description}
           </div>
         )}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+        <div className="lg:absolute lg:bottom-0 lg:left-0 lg:right-0 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 origin-left" />
       </div>
     </div>
   )

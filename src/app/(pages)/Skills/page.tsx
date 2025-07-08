@@ -12,13 +12,13 @@ import HTMLLogo from "@/assets/icons8-html-96.png"
 const skillsData = [
   {
     id: 1,
-    title: "React JS",
+    title: "React",
     logo: ReactLogo,
     description: "Frontend Library",
   },
   {
     id: 2,
-    title: "Next JS",
+    title: "Next.js",
     logo: NextLogo,
     description: "React Framework"
   },
@@ -77,7 +77,7 @@ const SkillsPage = () => {
       
       {/* Skill Cards */}
       <div className='container mx-auto px-6 pb-16'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8'>
           {skillsData.map((skill) => (
             <SkillCard
               key={skill.id}
